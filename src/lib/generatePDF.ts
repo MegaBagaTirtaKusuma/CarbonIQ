@@ -197,7 +197,7 @@ export function generatePDFReport(
   });
 
   // ── FOOTER ────────────────────────────────────────────────────
-  const pageCount = doc.getNumberOfPages();
+  const pageCount = (doc as any).internal.getNumberOfPages() || (doc as any).getNumberOfPages();
   for (let i = 1; i <= pageCount; i++) {
     doc.setPage(i);
     doc.setFillColor(...GREEN);
